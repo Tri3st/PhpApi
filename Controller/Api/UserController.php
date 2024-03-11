@@ -48,17 +48,7 @@ class UserController extends BaseController
      */
     protected function checkUserAction()
     {
-        if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']))
-        {
-            header('WWW-Authenticate: Basic realm="api.vandiest.xyz"');
-            header('HTTP/1.0 401 Unautherized');
-            echo 'Authentication required';
-            exit;
-        }
 
-        // Authenticate user credentials
-        $username = $_SERVER['PHP_AUTH_USER'];
-        $password = $_SERVER['PHP_AUTH_PW'];
 
         echo($username . $password);
 
