@@ -66,13 +66,13 @@ class UserController extends BaseController
                         echo("User credentials valid!");
                     }
                     else {
-                        $strErrorDesc = $e->getMessage().'User credentials invalid!';
+                        $strErrorDesc = 'User credentials invalid!';
                         $strErrorHeader = 'HTTP/1.1 404 Invalid Credentials';
                     }
                 }
                 else
                 {
-                    $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
+                    $strErrorDesc = 'Something went wrong! Please contact support.';
                     $strErrorHeader = 'HTTP/1.1 500 Credentials are needed';
                 }
 
