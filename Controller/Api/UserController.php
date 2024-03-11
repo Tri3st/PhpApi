@@ -46,7 +46,7 @@ class UserController extends BaseController
      *
      * @return void
      */
-    protected function checkUserAction()
+    public function checkUserAction()
     {
         echo("HELLO!");
 
