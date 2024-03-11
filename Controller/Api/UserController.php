@@ -68,20 +68,25 @@ class UserController extends BaseController
             echo '<p>Access denied! You do not know the password.</p>';
         }
 
-        echo($username . $password);
+        echo("IN checkUSER ACTION !!! ");
 
-        // Query the database for the user with th given credentials
-        $stmt = $pdo->prepare('SELECT * FROM users WHERE username = ?');
-        $stmt->execute([$username]);
-        $user = $stmtm->fetch(PDO::FETCH_ASSOC);
+        $strErrorDesc = '';
+        $requestMethod = $_SERVER["REQUEST_METHOD"];
+        $arrQueryStringParams = $this->getQueryStringParams();
+        if (strtoupper($requestMethod) == 'GET') {
+            try {
+                $userModel = new UserModel();
 
-        if(!$user || !password_verify($password, $user['password']))
-        {
-            header('HTTP/1.0 401 Unauthorized');
-            echo 'Invalid credentials';
-            exit;
+                $arrUsers = $userModel->getUserCredentials($username);
+                $responseData = json_encode($arrUsers);
+            } catch (Error $e) {
+                $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';
+                $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';
+            }
+        } else {
+            $strErrorDesc = 'Method not supported';
+            $strErrorHeader = 'HTTP/1.1 422 Unprocessable Entity';
         }
 
-        return $user;
     }
 }

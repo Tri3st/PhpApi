@@ -3,7 +3,7 @@
 class PostController extends BaseController
 {
     /**
-     * "/user/list" Endpoint - Get list of users
+     * "/post/list" Endpoint - Get list of posts
      */
     public function listPostAction()
     {
@@ -12,7 +12,7 @@ class PostController extends BaseController
         $arrQueryStringParams = $this->getQueryStringParams();
         if (strtoupper($requestMethod) == 'GET') {
             try {
-                $userModel = new UserModel();
+                $postModel = new PostModel();
                 $intLimit = 10;
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = $arrQueryStringParams['limit'];
