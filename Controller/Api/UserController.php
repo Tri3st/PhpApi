@@ -5,7 +5,7 @@ class UserController extends BaseController
     /**
      * "/user/list" Endpoint - Get list of users
      */
-    public function listAction()
+    public function listUserAction()
     {
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -46,7 +46,7 @@ class UserController extends BaseController
      *
      * @return void
      */
-    protected function checkuserAction()
+    protected function checkUserAction()
     {
         if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW']))
         {

@@ -1,11 +1,11 @@
 <?php
 
-class UserController extends BaseController
+class PostController extends BaseController
 {
     /**
      * "/user/list" Endpoint - Get list of users
      */
-    public function listAction()
+    public function listPostAction()
     {
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
@@ -41,10 +41,10 @@ class UserController extends BaseController
         }
     }
 
-    public function createAction(){}
+    public function createPostAction(){}
 
-    public function updateAction(){}
+    public function updatePostAction(){}
 
-    public function deleteAction(){}
+    public function deletePostAction(){}
 
 }
