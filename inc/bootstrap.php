@@ -8,7 +8,10 @@ require_once PROJECT_ROOT_PATH . "/inc/config.php";
 // include the base controller file
 require_once PROJECT_ROOT_PATH . "/Controller/Api/BaseController.php";
 
-// include the use model file
+// include the user model file
 require_once PROJECT_ROOT_PATH . "/Model/UserModel.php";
+
+// include the post model file
+require_once PROJECT_ROOT_PATH . "/Model/PostModel.php"
 
 ?>
