@@ -61,18 +61,18 @@ class UserController extends BaseController
                     echo("Username " . $username . " with password " . $password . " received.\n");
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
-                    $passwordFromDb = $foundUser[0]["password"];
+                    $passwordFromDb = trim($foundUser[0]["password"]);
                     // $foundUser = array(1) {
                     //  [0]=>
                     //  array(1) {
                     //    ["password"]=>
-                    //    string(33) "098f6bcd4621d373cade4e832627b4f6 "
+                    //    string(33) "098f6bcd4621d373cade4e832627b4f6"
                     //  }
                     //}
                     echo("The MD5 has of the password is : " . md5($password) . " \n");
-                    echo("And shoudl be : " . md5("test") . " \n");
+                    echo("And should be : " . md5("test") . " \n");
 
-                    if(md5($password) == $passwordFromDb)
+                    if(strcmp(md5($password), $passwordFromDb) == 0)
                     {
                         echo("User credentials valid!");
                     }
