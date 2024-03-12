@@ -61,7 +61,7 @@ class UserController extends BaseController
                     echo("Username " . $username . " with password " . $password . " received.\n");
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
-                    $foundUserStr = implode(",", $foundUser);
+                    var_dump($foundUser);
                     $foundUserJson = json_encode($foundUser);
 
                     echo("user from database : " . $foundUserStr . " \n");
