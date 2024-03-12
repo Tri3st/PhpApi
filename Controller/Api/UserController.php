@@ -61,12 +61,16 @@ class UserController extends BaseController
                     echo("Username " . $username . " with password " . $password . " received.\n");
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
-                    var_dump($foundUser);
-                    $foundUserJson = json_encode($foundUser);
+                    $passwordFromDb = $foundUser[0]["password"];
+                    // $foundUser = array(1) {
+                    //  [0]=>
+                    //  array(1) {
+                    //    ["password"]=>
+                    //    string(33) "098f6bcd4621d373cade4e832627b4f6 "
+                    //  }
+                    //}
 
-                    echo("user from database : " . $foundUserStr . " \n");
-                    echo("User Json from database : " . $foundUserJson . " \n");
-                    if(md5($password) == $foundUser['password'])
+                    if(md5($password) == $passwordFromDb)
                     {
                         echo("User credentials valid!");
                     }
