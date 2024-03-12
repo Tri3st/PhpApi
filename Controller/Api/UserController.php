@@ -68,7 +68,8 @@ class UserController extends BaseController
                         $userInfo = $userInfo . "," . $value;
                     }
 
-                    echo("-> " . $userInfo);
+                    echo("-> " . $userInfo . " \n.");
+                    echo("password : " . $foundUser['password'] . " \n");
 
                     if(md5($password) == $foundUser['password'])
                     {
