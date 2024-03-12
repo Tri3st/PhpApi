@@ -62,7 +62,7 @@ class UserController extends BaseController
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
 
-                    $userInfo = implode(",", $foundUser);
+                    $userInfo = $foundUser[0];
 
                     echo($userInfo);
 
