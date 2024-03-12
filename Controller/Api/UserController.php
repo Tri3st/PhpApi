@@ -62,9 +62,9 @@ class UserController extends BaseController
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
 
-                    $userInfo = $foundUser[0];
+                    $userInfo = implode(",", $foundUser);
 
-                    echo($userInfo);
+                    echo("-> " . $userInfo);
 
                     if(md5($password) == $foundUser['password'])
                     {
