@@ -58,14 +58,14 @@ class UserController extends BaseController
                     $username = $_SERVER['PHP_AUTH_USER'];
                     $password = $_SERVER['PHP_AUTH_PW'];
 
-                    echo("\nUsername " . $username . " with password " . $password . " received.");
+                    echo("Username " . $username . " with password " . $password . " received.\n");
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
 
                     $userInfo = implode(",", $foundUser);
 
-                    echo("\nFound user : " . $userInfo);
-                    //echo("\nwith password " . $foundUser['password']);
+                    echo("Found user : " . $userInfo . "\n.");
+
                     if(md5($password) == $foundUser['password'])
                     {
                         echo("User credentials valid!");
