@@ -11,6 +11,6 @@ class UserModel extends Database
 
     public function getUserCredentials($username)
     {
-        return $this->select("SELECT password FROM users WHERE username = ?", ["s", $username]);
+        return $this->select("SELECT password FROM users WHERE username = '?'", ["s", $username]);
     }
 }
