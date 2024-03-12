@@ -44,7 +44,7 @@ class UserController extends BaseController
     /**
      * Checks if the user provided in the Basic authorization is found in the database and saves the user role.
      *
-     * @return void
+     * @return boolean
      */
     public function checkUserAction()
     {
@@ -60,7 +60,7 @@ class UserController extends BaseController
 
                     echo("Username " . $username . " with password " . $password . " received.\n");
                     $userModel = new UserModel();
-                    $foundUser = $userModel->getUserCredentials($username);
+                    $foundUser = $userModel->getUserPassword($username);
                     $passwordFromDb = trim($foundUser[0]["password"]);
                     // $foundUser = array(1) {
                     //  [0]=>
@@ -69,12 +69,11 @@ class UserController extends BaseController
                     //    string(33) "098f6bcd4621d373cade4e832627b4f6"
                     //  }
                     //}
-                    echo("The MD5 has of the password is : " . md5($password) . " \n");
-                    echo("And should be : " . md5("test") . " \n");
 
                     if(strcmp(md5($password), $passwordFromDb) == 0)
                     {
                         echo("User credentials valid!");
+                        return true;
                     }
                     else {
                         $strErrorDesc = 'User credentials invalid!';
@@ -95,18 +94,7 @@ class UserController extends BaseController
             $strErrorDesc = 'Method not supported';
             $strErrorHeader = 'HTTP/1.1 422 Unprocessable Entity';
         }
-
-        // send output
-        if (!$strErrorDesc) {
-            $this->sendOutput(
-                $responseData,
-                array('Content-Type: application/json', 'HTTP/1.1 200 OK')
-            );
-        } else {
-            $this->sendOutput(json_encode(array('error' => $strErrorDesc)),
-                array('Content-Type: application/json', $strErrorHeader)
-            );
-        }
-
+        return false;
     }
+
 }
