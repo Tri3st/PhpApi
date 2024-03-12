@@ -19,12 +19,3 @@ bWFydGluOnRlc3Q
 
 An online base64 encoder/decoder can be found [here](https://www.base64encode.org).
 
-## MySQL credentials
-
-```shell
-DB_HOST=localhost  
-DB_PORT=3306  
-DB_DATABASE=triest_myreact  
-DB_USERNAME=triest_admin  
-DB_PASSWORD=gEh2xKZyj5Md  
-```
