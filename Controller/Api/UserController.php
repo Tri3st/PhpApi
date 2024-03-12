@@ -62,7 +62,11 @@ class UserController extends BaseController
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
 
-                    $userInfo = implode(",", $foundUser);
+                    $userInfo = "";
+                    foreach($foundUser as $key => $value)
+                    {
+                        $userInfo = $userInfo . "," . $value;
+                    }
 
                     echo("-> " . $userInfo);
 
