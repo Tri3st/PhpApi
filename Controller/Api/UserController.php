@@ -62,8 +62,8 @@ class UserController extends BaseController
                     $userModel = new UserModel();
                     $foundUser = $userModel->getUserCredentials($username);
 
-                    echo("\nFound user : " . $foundUser['username']);
-                    echo("\nwith password " . $foundUser['password']);
+                    echo("\nFound user : " . $foundUser);
+                    //echo("\nwith password " . $foundUser['password']);
                     if(md5($password) == $foundUser['password'])
                     {
                         echo("User credentials valid!");
