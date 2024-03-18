@@ -2,6 +2,12 @@
 
 class PostController extends BaseController
 {
+    public function checkUser()
+    {
+        $userModel = new UserModel();
+        if ($userModel->checkUserAction)
+    }
+
     /**
      * "/post/list" Endpoint - Get list of posts
      */
@@ -17,7 +23,7 @@ class PostController extends BaseController
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = $arrQueryStringParams['limit'];
                 }
-                $arrUsers = $userModel->getUsers($intLimit);
+                $arrUsers = $postModel->getUsers($intLimit);
                 $responseData = json_encode($arrUsers);
             } catch (Error $e) {
                 $strErrorDesc = $e->getMessage().'Something went wrong! Please contact support.';

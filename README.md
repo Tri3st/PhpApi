@@ -2,7 +2,7 @@
 
 ## Basic Auth
 
-The use of the basic Auth aithorization:
+The use of the basic Auth authorization:
 
 Send the header 'Authorization: Basic <credentials>'
 

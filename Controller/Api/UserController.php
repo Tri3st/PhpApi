@@ -44,7 +44,7 @@ class UserController extends BaseController
     /**
      * Checks if the user provided in the Basic authorization is found in the database and saves the user role.
      *
-     * @return numeric \ boolean
+     * @return boolean
      */
     public function checkUserAction()
     {
@@ -74,13 +74,14 @@ class UserController extends BaseController
                     {
                         echo("User credentials valid!");
                         $userRole = $userModel->getUserRole($username)[0];
-                        if ($userRole == 1) {
+                        if ($userRole < 3) {
                             echo("Userrole is sufficient.");
+                            return true;
                         } else {
                             $strErrorDesc = 'User authorization invalid!';
                             $strErrorHeader = 'HTTP/1.1 404 Invalid Autorization';
                         }
-                        return $userRole;
+
                     }
                     else {
                         $strErrorDesc = 'User credentials invalid!';
